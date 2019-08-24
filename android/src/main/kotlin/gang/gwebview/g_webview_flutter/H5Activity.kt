@@ -6,21 +6,30 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.ImageView
-import android.widget.RelativeLayout
+import android.widget.*
 
 /**
  * @author gangAndroid on 2019/8/24.
  * @Github：https://github.com/gangAndroid
  */
 class H5Activity : Activity() {
-    var webView: WebView? = null
+    lateinit var webView: WebView
+    lateinit var mainPro: ProgressBar
     var closeView: ImageView? = null
+    var mUrlView: EditText? = null
+    var mClearView: ImageView? = null
+    var mOkView: TextView? = null
+    var mBackView: ImageView? = null
+    var mGoView: ImageView? = null
     var mUploadMessage: ValueCallback<Uri>? = null
     var uploadMessageAboveL: ValueCallback<Array<Uri>>? = null
     private var js_loaded: String = ""
@@ -29,9 +38,63 @@ class H5Activity : Activity() {
 
         setContentView(R.layout.main)
         webView = findViewById(R.id.main_web)
+        mainPro = findViewById(R.id.main_pro)
         closeView = findViewById(R.id.main_close)
+        mUrlView = findViewById(R.id.main_url)
+        mClearView = findViewById(R.id.main_clear)
+        mOkView = findViewById(R.id.main_ok)
+        mBackView = findViewById(R.id.main_back)
+        mGoView = findViewById(R.id.main_go)
 
         initView()
+
+        initListener()
+    }
+
+    private fun initListener() {
+        mClearView!!.setOnClickListener {
+            mUrlView!!.setText("")
+        }
+        mUrlView!!.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                if (mClearView!!.visibility != View.VISIBLE) {
+                    mClearView!!.visibility = View.VISIBLE
+                }
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+        mOkView!!.setOnClickListener {
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            val v = window.peekDecorView()
+            if (v != null) {
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+            }
+            mOkView!!.requestFocus()
+            mClearView!!.visibility = View.GONE
+            val url = mUrlView!!.text.toString()
+            if (url.isNotEmpty()) {
+                if (!url.startsWith("http")) {
+                    webView.loadUrl("http://$url")
+                } else {
+                    webView.loadUrl(url)
+                }
+            }
+        }
+        mBackView!!.setOnClickListener {
+            if (webView.canGoBack()) {
+                webView.goBack()
+            }
+        }
+        mGoView!!.setOnClickListener {
+            if (webView.canGoForward()) {
+                webView.goForward()
+            }
+        }
     }
 
     private fun initView() {
@@ -39,8 +102,8 @@ class H5Activity : Activity() {
         closeView!!.setOnClickListener { this.finish() }
         title = intent.getStringExtra("title") ?: ""
         js_loaded = intent.getStringExtra("js_loaded") ?: ""
-        webView?.apply {
-            layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
+        webView.apply {
+            //            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
             loadUrl(intent.getStringExtra("url"))
             settings.javaScriptEnabled = true
             webViewClient = object : WebViewClient() {
@@ -53,8 +116,10 @@ class H5Activity : Activity() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
                     if (js_loaded.isNotEmpty()) {
-                        webView!!.loadUrl(js_loaded)
+                        webView.loadUrl(js_loaded)
                     }
+                    if (url != null && url.startsWith("http"))
+                        mUrlView!!.setText(url)
                 }
             }
             webChromeClient = object : WebChromeClient() {
@@ -81,6 +146,18 @@ class H5Activity : Activity() {
                     uploadMessageAboveL = filePathCallback
                     choosePicture(1)
                     return true
+                }
+
+                override fun onProgressChanged(view: WebView?, newProgress: Int) {
+//                    super.onProgressChanged(view, newProgress)
+                    if (newProgress == 100) {
+                        mainPro.visibility = View.GONE
+                    } else {
+                        if (mainPro.visibility == View.GONE)
+                            mainPro.visibility = View.VISIBLE
+                        mainPro.progress = newProgress
+                    }
+                    super.onProgressChanged(view, newProgress)
                 }
             }
         }

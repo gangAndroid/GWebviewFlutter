@@ -1,18 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#E2E2E2"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/main_close"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/close_b" />
+
+        <EditText
+            android:id="@+id/main_url"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            tools:ignore="TextFields" />
+
+        <ImageView
+            android:id="@+id/main_clear"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:src="@drawable/main_clear" />
+
+        <TextView
+            android:id="@+id/main_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="搜索"
+            android:textColor="#000001" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/main_pro"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:max="100"
+        android:progress="80" />
 
     <WebView
         android:id="@+id/main_web"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <ImageView
-        android:id="@+id/main_close"
-        android:layout_width="40dp"
-        android:padding="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_height="wrap_content"
-        android:src="@drawable/close_w" />
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#E2E2E2"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <ImageView
+            android:id="@+id/main_back"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/main_bot_back" />
+
+        <View
+            android:layout_width="60dp"
+            android:layout_height="1dp" />
+
+        <ImageView
+            android:id="@+id/main_go"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/main_bot_go" />
+
+    </LinearLayout>
+</LinearLayout>

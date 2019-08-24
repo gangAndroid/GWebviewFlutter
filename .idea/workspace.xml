@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0dcafaf6-7e81-4b18-9c9f-cefaf296d69c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/main_bot_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/main_bot_go.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/main_clear.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/GWebviewFlutterPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/GWebviewFlutterPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Demo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Demo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/g_webview_flutter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/g_webview_flutter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/H5Activity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/H5Activity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/res/drawable/close_w.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/res/drawable/close_b.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/res/layout/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/res/layout/main.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -24,7 +23,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/H5Activity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2983">
+              <caret line="157" column="32" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -44,16 +53,17 @@
         <option value="$PROJECT_DIR$/lib/g_webview_flutter.dart" />
         <option value="$PROJECT_DIR$/example/pubspec.yaml" />
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/GWebviewFlutterPlugin.kt" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/H5Activity.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -68,6 +78,24 @@
             <path>
               <item name="GWebviewFlutter" type="b2602c69:ProjectViewProjectNode" />
               <item name="GWebviewFlutter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GWebviewFlutter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GWebviewFlutter" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GWebviewFlutter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GWebviewFlutter" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GWebviewFlutter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GWebviewFlutter" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="g_webview_flutter" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -157,13 +185,27 @@
       <option name="project" value="LOCAL" />
       <updated>1566614133694</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="优化现有代码">
+      <created>1566615932485</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1566615932485</updated>
+    </task>
+    <task id="LOCAL-00009" summary="更新版本">
+      <created>1566616022924</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1566616022924</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28518122" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28518122" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -173,7 +215,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="1" visible="true" weight="0.3286334" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" visible="true" weight="0.3286334" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" />
@@ -198,6 +240,7 @@
     <MESSAGE value="修改语言" />
     <MESSAGE value="增加联系信息" />
     <MESSAGE value="优化警告" />
+    <MESSAGE value="优化现有代码" />
     <MESSAGE value="更新版本" />
     <option name="LAST_COMMIT_MESSAGE" value="更新版本" />
   </component>
@@ -289,13 +332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/GWebviewFlutterPlugin.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -303,10 +339,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/gang/gwebview/g_webview_flutter/H5Activity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="40" column="60" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
+        <state relative-caret-position="2983">
+          <caret line="157" column="32" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
         </state>
       </provider>
     </entry>
