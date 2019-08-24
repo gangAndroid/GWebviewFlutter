@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:g_webview_flutter/g_webview_flutter.dart';
 
 void main() {
@@ -42,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             child: Text('Running on: '),
             onTap: () {
               GWebviewFlutter.openWebActivity("http://pet.zoosnet.net/LR/Chatpre.aspx?lng=cn&id=PET83076163",
-                  title: "标题", js_loaded: jsStr);
+                  title: "标题", jsLoaded: jsStr);
             },
           ),
         ),

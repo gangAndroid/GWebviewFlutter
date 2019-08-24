@@ -19,12 +19,12 @@ class GWebviewFlutter {
     }
   }
 
-  static Future<void> openWebActivity(String url, {String title, String js_loaded}) async {
+  static Future<void> openWebActivity(String url, {String title, String jsLoaded}) async {
     if (defaultTargetPlatform == TargetPlatform.android) {
       final Map<String, dynamic> params = <String, dynamic>{
         'url': url,
         'title': title,
-        'js_loaded': js_loaded
+        'js_loaded': jsLoaded
       };
       return await _channel.invokeMethod("openH5Activity", params);
     } else {

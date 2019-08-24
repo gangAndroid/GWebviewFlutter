@@ -1,5 +1,5 @@
-class Demo{
-  void test(){
+class Demo {
+  void test() {
     print("test");
   }
 }
