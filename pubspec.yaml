@@ -1,8 +1,8 @@
 name: g_webview_flutter
 description: GWebviewFlutterPlugin
 version: 0.0.1
-author:
-homepage:
+author: gang <1729950804@qq.com>
+homepage: https://github.com/gangAndroid/GWebviewFlutter
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
