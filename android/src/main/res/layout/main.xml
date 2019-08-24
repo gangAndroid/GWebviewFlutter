@@ -28,6 +28,8 @@
             android:inputType="text"
             android:lines="1"
             android:maxLines="1"
+            android:hint="请输入网址"
+            android:textColorHint="#383838"
             android:textColor="#000000"
             android:textSize="14sp"
             tools:ignore="TextFields" />
