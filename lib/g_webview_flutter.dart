@@ -10,6 +10,7 @@ class GWebviewFlutter {
     return version;
   }
 
+  ///初始化SDK
   static Future<bool> init() async {
     if (defaultTargetPlatform == TargetPlatform.android) {
       bool res = await _channel.invokeMethod("init");
@@ -19,6 +20,9 @@ class GWebviewFlutter {
     }
   }
 
+  ///打开原生的H5页面
+  ///
+  /// jsLoaded 是网页加载完毕后执行的js代码
   static Future<void> openWebActivity(String url, {String title, String jsLoaded}) async {
     if (defaultTargetPlatform == TargetPlatform.android) {
       final Map<String, dynamic> params = <String, dynamic>{

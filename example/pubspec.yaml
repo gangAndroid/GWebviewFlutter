@@ -1,5 +1,5 @@
 name: g_webview_flutter_example
-description: Demonstrates how to use the g_webview_flutter plugin.
+description: G_webview_flutter is used to open the original H5 page on flutter to improve development efficiency
 publish_to: 'none'
 
 environment:

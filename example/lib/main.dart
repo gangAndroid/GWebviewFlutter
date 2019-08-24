@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g_webview_flutter/g_webview_flutter.dart';
 
 void main() {
-  GWebviewFlutter.init();
+  GWebviewFlutter.init(); // 初始化SDK
   runApp(MyApp());
 }
 
@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // js代码如：
     String jsStr = "";
     jsStr = "javascript:function modifyText() {";
     jsStr += "var list=document.getElementById(\"header\");";
@@ -38,8 +39,11 @@ class _MyAppState extends State<MyApp> {
           child: GestureDetector(
             child: Text('Running on: '),
             onTap: () {
-              GWebviewFlutter.openWebActivity("http://pet.zoosnet.net/LR/Chatpre.aspx?lng=cn&id=PET83076163",
-                  title: "标题", jsLoaded: jsStr);
+              GWebviewFlutter.openWebActivity(
+                "http://pet.zoosnet.net/LR/Chatpre.aspx?lng=cn&id=PET83076163",
+                title: "标题",
+                jsLoaded: jsStr,
+              );
             },
           ),
         ),
