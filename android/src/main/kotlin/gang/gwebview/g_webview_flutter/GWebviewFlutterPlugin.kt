@@ -40,7 +40,7 @@ class GWebviewFlutterPlugin(var context: Context, var activity: Activity) : Meth
                 intent.putExtra("title", title)
                 intent.putExtra("js_loaded", js_loaded)
                 activity.startActivity(intent)
-                result.success("open success")
+                result.success(true)
             }
         }
     }
