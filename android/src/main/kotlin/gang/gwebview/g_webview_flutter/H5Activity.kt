@@ -53,21 +53,29 @@ class H5Activity : Activity() {
 
     private fun initListener() {
         mClearView!!.setOnClickListener {
+            mClearView!!.visibility = View.GONE
             mUrlView!!.setText("")
         }
-        mUrlView!!.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
+//        mUrlView!!.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable?) {
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//                if (mClearView!!.visibility != View.VISIBLE) {
+//                    if (s.toString().isNotEmpty()) {
+//                        mClearView!!.visibility = View.VISIBLE
+//                    }
+//                }
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//            }
+//        })
+        mUrlView!!.setOnClickListener {
+            if (mClearView!!.visibility != View.VISIBLE) {
+                mClearView!!.visibility = View.VISIBLE
             }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                if (mClearView!!.visibility != View.VISIBLE) {
-                    mClearView!!.visibility = View.VISIBLE
-                }
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-        })
+        }
         mOkView!!.setOnClickListener {
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             val v = window.peekDecorView()
@@ -102,6 +110,12 @@ class H5Activity : Activity() {
         closeView!!.setOnClickListener { this.finish() }
         title = intent.getStringExtra("title") ?: ""
         js_loaded = intent.getStringExtra("js_loaded") ?: ""
+        val isShowUrl = intent.getBooleanExtra("isShowUrl", false)
+        if (isShowUrl) {
+            mUrlView!!.visibility = View.VISIBLE
+            mOkView!!.visibility = View.VISIBLE
+        }
+        mClearView!!.visibility = View.GONE
         webView.apply {
             //            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
             loadUrl(intent.getStringExtra("url"))

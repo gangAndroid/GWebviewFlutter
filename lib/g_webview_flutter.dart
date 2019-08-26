@@ -3,8 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class GWebviewFlutter {
-  static const MethodChannel _channel =
-      const MethodChannel('g_webview_flutter');
+  static const MethodChannel _channel = const MethodChannel('g_webview_flutter');
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
@@ -25,12 +24,13 @@ class GWebviewFlutter {
   ///
   /// jsLoaded 是网页加载完毕后执行的js代码
   static Future<void> openWebActivity(String url,
-      {String title, String jsLoaded}) async {
+      {String title, String jsLoaded, bool isShowUrl}) async {
     if (defaultTargetPlatform == TargetPlatform.android) {
       final Map<String, dynamic> params = <String, dynamic>{
         'url': url,
         'title': title,
-        'js_loaded': jsLoaded
+        'js_loaded': jsLoaded,
+        'isShowUrl': isShowUrl
       };
       return await _channel.invokeMethod("openH5Activity", params);
     } else {

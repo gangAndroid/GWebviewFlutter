@@ -34,11 +34,14 @@ class GWebviewFlutterPlugin(var context: Context, var activity: Activity) : Meth
                 // 标题
                 val title = call.argument<String>("title")
                 // js代码
-                val js_loaded = call.argument<String>("js_loaded")
+                val jsLoaded = call.argument<String>("js_loaded")
+                // 是否显示地址栏
+                val isShowUrl = call.argument<Boolean>("isShowUrl")
                 val intent = Intent(activity, H5Activity::class.java)
                 intent.putExtra("url", url)
                 intent.putExtra("title", title)
-                intent.putExtra("js_loaded", js_loaded)
+                intent.putExtra("js_loaded", jsLoaded)
+                intent.putExtra("isShowUrl", isShowUrl)
                 activity.startActivity(intent)
                 result.success(true)
             }
