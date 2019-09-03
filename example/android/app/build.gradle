@@ -45,7 +45,7 @@ android {
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
+    
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

@@ -1,9 +1,12 @@
 package gang.gwebview.g_webview_flutter
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.net.http.SslError
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -11,11 +14,10 @@ import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.webkit.ValueCallback
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import android.widget.*
+import io.flutter.plugin.common.EventChannel
+import org.json.JSONObject
 
 /**
  * @author gangAndroid on 2019/8/24.
@@ -33,6 +35,8 @@ class H5Activity : Activity() {
     var mUploadMessage: ValueCallback<Uri>? = null
     var uploadMessageAboveL: ValueCallback<Array<Uri>>? = null
     private var js_loaded: String = ""
+    var webviewCall: GWebViewCall = GWebViewCall()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -116,8 +120,11 @@ class H5Activity : Activity() {
             mOkView!!.visibility = View.VISIBLE
         }
         mClearView!!.visibility = View.GONE
+
+        val userInfo = intent.getStringExtra("userInfo_json") ?: ""
+
+        webView.addJavascriptInterface(MyJsInterface(webviewCall.listener, userInfo), "")
         webView.apply {
-            //            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
             loadUrl(intent.getStringExtra("url"))
             settings.javaScriptEnabled = true
             webViewClient = object : WebViewClient() {
@@ -134,6 +141,11 @@ class H5Activity : Activity() {
                     }
                     if (url != null && url.startsWith("http"))
                         mUrlView!!.setText(url)
+                }
+
+                override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
+//                    super.onReceivedSslError(view, handler, error)
+                    handler!!.proceed()
                 }
             }
             webChromeClient = object : WebChromeClient() {
@@ -175,6 +187,22 @@ class H5Activity : Activity() {
                 }
             }
         }
+    }
+
+    @SuppressLint("JavascriptInterface")
+    class MyJsInterface(private val listener: EventChannel.EventSink?, private val userInfo: String) {
+
+        @JavascriptInterface
+        fun getUserInfo(): String {
+            return userInfo
+        }
+
+        @JavascriptInterface
+        fun createVCLWalletCallback(json: String): Boolean {
+            listener!!.success(json)
+            return true
+        }
+
     }
 
     private fun choosePicture(type: Int) {

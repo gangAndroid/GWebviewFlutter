@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:g_webview_flutter/g_webview_flutter.dart';
 
 void main() {
@@ -12,6 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   @override
   void initState() {
     super.initState();
@@ -39,11 +43,14 @@ class _MyAppState extends State<MyApp> {
           child: GestureDetector(
             child: Text('Running on: '),
             onTap: () {
-              GWebviewFlutter.openWebActivity(
-                "http://pet.zoosnet.net/LR/Chatpre.aspx?lng=cn&id=PET83076163",
-                title: "标题",
-                jsLoaded: jsStr,
-              );
+              GWebviewFlutter.openWebActivity("https://mn.vpubchain.com/ben/#/account",
+                  title: "标题",
+                  jsLoaded: jsStr,
+                  is4: true,
+                  userInfo_key: "",
+                  userInfo_phone: "18620627664",
+                  userInfo_userType: "1",
+                  userInfo_nodeTime: "1");
             },
           ),
         ),
